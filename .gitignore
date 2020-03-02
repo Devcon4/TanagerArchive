@@ -1,0 +1,8 @@
+/src/dist
+/src/node_modules
+/demo/node_modules
+/demo/dist
+/demo/.cache
+/src/.cache
+/src/tanager.log
+/demo/tanager.log

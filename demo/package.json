@@ -1,0 +1,26 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "A demo app using tanager.",
+  "main": "index.html",
+  "scripts": {
+    "serve": "parcel index.html",
+    "build": "parcel build indx.html",
+    "gen": "tanager-cli build"
+  },
+  "author": "Devyn Cyphers (Devcon4)",
+  "license": "ISC",
+  "devDependencies": {
+    "lit-element": "^2.2.1",
+    "parcel": "^1.12.4",
+    "tslib": "^1.11.1",
+    "typescript": "^3.8.3"
+  },
+  "staticFiles": {
+    "watcherGlob": "**"
+  },
+  "browserslist": [
+    "last 1 chrome versions"
+  ],
+  "dependencies": {}
+}
