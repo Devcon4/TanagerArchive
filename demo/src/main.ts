@@ -14,3 +14,11 @@ export class AppComponent extends LitElement {
         `;
     }
 }
+
+@customElement('demo-heading')
+export class HeadingComponent extends LitElement {
+
+    render() {
+        return html`<h1>Blog post - <slot></slot></h1>`;
+    }
+}

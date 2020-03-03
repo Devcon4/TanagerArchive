@@ -5,6 +5,12 @@ import rollup from 'rollup';
 import { createFilter } from 'rollup-pluginutils';
 import marked from 'marked';
 
+export interface MarkdownOverrideObject {}
+
+export type markdownOverrideMap = {
+    [key in keyof marked.Renderer]?: MarkdownOverrideObject
+}
+
 export interface tanagerOptions {
     include?: string | RegExp | (string | RegExp)[];
     exclude?: string | RegExp | (string | RegExp)[];
@@ -34,7 +40,13 @@ export default function tanager(options: tanagerOptions = {}): rollup.Plugin {
             if(!filter(id)) return;
             logger.log('info', 'transform: ' + id);
             // logger.log('info', 'original: ' + code.toString())
-            const data = await clean(marked(code));
+            var renderer = new marked.Renderer();
+            renderer.heading = (text, level) => {
+                return `<demo-heading>${text}</demo-heading>`;
+            };
+            const data = marked(code, {renderer});
+
+            logger.log('info', 'renderer: ' + data);
             // logger.log('info', 'transformed: ' + data.toString());
             // TODO: generate source from markdown.
             let res: rollup.TransformResult = {
